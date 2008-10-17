@@ -1,4 +1,4 @@
-This library (nested-pretty) is derivd from pretty, which is
+This library (nested-pretty) is derived from pretty, which is
 copied from libraries/pretty, and is derived from code from
 the GHC project which is largely (c) The University of
 Glasgow, and distributable under a BSD-style license (see below).
