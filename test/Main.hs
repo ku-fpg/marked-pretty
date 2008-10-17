@@ -1,6 +1,6 @@
 module Main where
 
-import Text.PrettyPrint.NestedHughesPJ hiding (Doc)
+import Text.PrettyPrint.MarkedHughesPJ hiding (Doc)
 
 data Exp = App Exp [Exp]
          | Var String
@@ -11,8 +11,8 @@ data Exp = App Exp [Exp]
 pretty :: Exp -> Doc
 pretty (App e args) = pretty e <+> sep (map (parens . pretty) args)
 pretty (Var v)      = text v
-pretty (Lit l)      = group BOLD $ group GREEN $ text (show l)
-pretty (List es)    = brackets (group RED (sep (punctuate (text ",") (map pretty es))))
+pretty (Lit l)      = scope BOLD $ scope GREEN $ text (show l)
+pretty (List es)    = brackets (scope RED (sep (punctuate (text ",") (map pretty es))))
 
 type Doc = MDoc Markup
 
@@ -26,8 +26,8 @@ open = mark . Open
 close :: MStyle -> Doc
 close = mark . Close
 
-group :: MStyle -> Doc -> Doc
-group s d = open s <> d <> close s
+scope :: MStyle -> Doc -> Doc
+scope s d = open s <> d <> close s
 
 example1 = Var "abc"
 example2 = Var "cde"
