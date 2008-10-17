@@ -1,0 +1,13 @@
+name:		nested-pretty
+version:	1.0
+license:	BSD3
+license-file:	LICENSE
+maintainer:	libraries@haskell.org
+synopsis:	Pretty-printing library, with scoping.
+description:
+	This package contains a pretty-printing library, with scoping.
+build-type: Simple
+exposed-modules:
+	Text.PrettyPrint.NestedHughesPJ
+build-depends: base
+
