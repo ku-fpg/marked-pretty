@@ -17,21 +17,14 @@ source-repository head
   type:                git
   location:            git://github.com/ku-fpg/marked-pretty.git
 
-flag test
-  description:         Build the test executable.
-  default:             False
-
 library
   build-depends:       base >= 3 && < 5
   exposed-modules:     Text.PrettyPrint.MarkedHughesPJ
   hs-source-dirs:      .
   ghc-options:         -Wall
 
-executable test
-  if flag(test)
-    buildable:         True
-  else
-    buildable:         False
+test-suite test
+  type:                exitcode-stdio-1.0
   main-is:             Main.hs
   build-depends:       base          >= 3 && < 5
                      , marked-pretty == 0.1.*
