@@ -1,0 +1,39 @@
+name:                marked-pretty
+version:             0.1.1
+synopsis:            Pretty-printing library, with scoping, based on pretty-1.0.0.0
+description:         This package contains a pretty-printing library, with scoping.
+homepage:            https://github.com/ku-fpg/marked-pretty
+bug-reports:         https://github.com/ku-fpg/marked-pretty/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Andy Gill
+maintainer:          Andy Gill <andygill@ku.edu>
+category:            Text
+build-type:          Simple
+extra-source-files:  CHANGELOG.md, README.md
+cabal-version:       >= 1.8
+
+source-repository head
+  type:                git
+  location:            git://github.com/ku-fpg/marked-pretty.git
+
+flag test
+  description:         Build the test executable.
+  default:             False
+
+library
+  build-depends:       base >= 3 && < 5
+  exposed-modules:     Text.PrettyPrint.MarkedHughesPJ
+  hs-source-dirs:      .
+  ghc-options:         -Wall
+
+executable test
+  if flag(test)
+    buildable:         True
+  else
+    buildable:         False
+  main-is:             Main.hs
+  build-depends:       base          >= 3 && < 5
+                     , marked-pretty == 0.1.*
+  hs-source-dirs:      test
+  ghc-options:         -Wall
